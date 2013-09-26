@@ -8,16 +8,18 @@ SUPPORT=/home/oxygen/MOONEY/epics/synAppsSVN/support
 -include $(TOP)/../configure/SUPPORT.$(EPICS_HOST_ARCH)
 
 #If using the sequencer, point SNCSEQ at its top directory:
-SNCSEQ=$(SUPPORT)/seq-2-1-2
+SNCSEQ=$(SUPPORT)/seq/2-1-11
 
 # For transform record (not needed to build)
-CALC=$(SUPPORT)/calc-2-9
+CALC=$(SUPPORT)/calc/2-9
 
 # For busy record (not needed to build)
-BUSY=$(SUPPORT)/busy-1-4
+BUSY=$(SUPPORT)/busy/1-4
 
 # for serial support
-ASYN=$(SUPPORT)/asyn-4-17
+ASYN=$(SUPPORT)/asyn/4-18
+
+SSCAN=$(SUPPORT)/sscan/2-8
 
 # EPICS_BASE usually appears last so other apps can override stuff:
 EPICS_BASE=/home/oxygen/MOONEY/epics/base-3.14.12.1
@@ -26,3 +28,4 @@ EPICS_BASE=/home/oxygen/MOONEY/epics/base-3.14.12.1
 #Capfast users may need the following definitions
 #CAPFAST_TEMPLATES=
 #SCH2EDIF_PATH=
+include $(TOP)/../../../ISIS_CONFIG.$(EPICS_HOST_ARCH)
