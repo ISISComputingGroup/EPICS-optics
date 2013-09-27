@@ -66,6 +66,7 @@ opticsTest_SRCS += opticsTest_registerRecordDeviceDriver.cpp
 opticsTest_LIBS += optics
 opticsTest_LIBS += calc
 opticsTest_LIBS += autosave
+opticsTest_LIBS += seq pv
 
 # Finally link to the EPICS Base libraries
 opticsTest_LIBS += $(EPICS_BASE_IOC_LIBS)
