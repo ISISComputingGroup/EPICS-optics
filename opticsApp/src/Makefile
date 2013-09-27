@@ -65,6 +65,7 @@ opticsTest_SRCS += opticsTest_registerRecordDeviceDriver.cpp
 
 opticsTest_LIBS += optics
 opticsTest_LIBS += calc
+opticsTest_LIBS += sscan
 opticsTest_LIBS += autosave
 opticsTest_LIBS += seq pv
 
