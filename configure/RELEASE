@@ -21,6 +21,10 @@ ASYN=$(SUPPORT)/asyn/4-18
 
 SSCAN=$(SUPPORT)/sscan/2-8
 
+OPTICS=$(SUPPORT)/optics/R2-9-1
+
+AUTOSAVE=$(SUPPORT)/autosave/R5_0
+
 # EPICS_BASE usually appears last so other apps can override stuff:
 EPICS_BASE=/home/oxygen/MOONEY/epics/base-3.14.12.1
 -include $(TOP)/../configure/EPICS_BASE.$(EPICS_HOST_ARCH)

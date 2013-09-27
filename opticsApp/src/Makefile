@@ -18,12 +18,11 @@ include $(TOP)/configure/CONFIG
 
 DBDINC += tableRecord
 
-DBD += opticsSupport.dbd
+DBD += opticsSupport.dbd opticsTest.dbd
 
 #=============================
 
 LIBRARY_IOC += optics
-
 
 optics_SRCS += tableRecord.c
 
@@ -58,6 +57,18 @@ optics_SRCS   += sncqxbpm.st
  
 optics_LIBS += seq pv
 optics_LIBS += $(EPICS_BASE_IOC_LIBS)
+
+PROD_IOC += opticsTest
+
+opticsTest_SRCS += opticsMain.cpp
+opticsTest_SRCS += opticsTest_registerRecordDeviceDriver.cpp
+
+opticsTest_LIBS += optics
+opticsTest_LIBS += calc
+opticsTest_LIBS += autosave
+
+# Finally link to the EPICS Base libraries
+opticsTest_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 include $(TOP)/configure/RULES
 #----------------------------------------
