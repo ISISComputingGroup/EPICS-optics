@@ -11,7 +11,7 @@ SUPPORT=/home/oxygen/MOONEY/epics/synAppsSVN/support
 SNCSEQ=$(SUPPORT)/seq/2-1-11
 
 # For transform record (not needed to build)
-CALC=$(SUPPORT)/calc/2-9
+CALC=$(SUPPORT)/calc/3-4
 
 # For busy record (not needed to build)
 BUSY=$(SUPPORT)/busy/1-4
