@@ -17,7 +17,7 @@ CALC=$(SUPPORT)/calc/3-4
 BUSY=$(SUPPORT)/busy/1-4
 
 # for serial support
-ASYN=$(SUPPORT)/asyn/4-22
+ASYN=$(SUPPORT)/asyn/4-26
 
 SSCAN=$(SUPPORT)/sscan/2-8
 
