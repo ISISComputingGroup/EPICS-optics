@@ -14,7 +14,7 @@ SNCSEQ=$(SUPPORT)/seq/2-1-11
 CALC=$(SUPPORT)/calc/3-4
 
 # For busy record (not needed to build)
-BUSY=$(SUPPORT)/busy/1-4
+BUSY=$(SUPPORT)/busy/1-6-1
 
 # for serial support
 ASYN=$(SUPPORT)/asyn/4-26
