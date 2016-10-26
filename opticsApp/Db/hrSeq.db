@@ -14,29 +14,29 @@ grecord(ai,"$(P)HR$(N)_Theta1TweakAI") {
 	field(DTYP,"Soft Channel")
 	field(INP,"0.01")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ai,"$(P)HR$(N)_Theta2TweakAI") {
 	field(DTYP,"Soft Channel")
 	field(INP,"0.01")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ai,"$(P)HR$(N)_phi1RdbkAI") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
-	field(EGU,"urad")
+	field(EGU,"uradian")
 }
 grecord(ai,"$(P)HR$(N)_phi2RdbkAI") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
-	field(EGU,"urad")
+	field(EGU,"uradian")
 }
 grecord(ai,"$(P)HR$(N)_worldTweakAI") {
 	field(DTYP,"Soft Channel")
 	field(INP,"0.01")
 	field(PREC,"3")
-	field(EGU,"urad")
+	field(EGU,"uradian")
 }
 grecord(ao,"$(P)HR$(N)_2d1AO") {
 	field(DESC,"Crystal 1 2d spacing")
@@ -44,7 +44,7 @@ grecord(ao,"$(P)HR$(N)_2d1AO") {
 	field(DTYP,"Soft Channel")
 	field(DOL,"1")
 	field(PREC,"5")
-	field(EGU,"Anstroms")
+	field(EGU,"angstrom")
 }
 grecord(ao,"$(P)HR$(N)_2d2AO") {
 	field(DESC,"Crystal 1 2d spacing")
@@ -52,7 +52,7 @@ grecord(ao,"$(P)HR$(N)_2d2AO") {
 	field(DTYP,"Soft Channel")
 	field(DOL,"1")
 	field(PREC,"5")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 }
 grecord(ao,"$(P)HR$(N)_A1AO") {
 	field(DESC,"Lattice constant")
@@ -62,7 +62,7 @@ grecord(ao,"$(P)HR$(N)_A1AO") {
 	field(PREC,"5")
 	field(EGUF,"20")
 	field(EGUL,"0.1")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 	field(DRVH,"20")
 	field(DRVL,"0.1")
 	field(HOPR,"20")
@@ -76,7 +76,7 @@ grecord(ao,"$(P)HR$(N)_A2AO") {
 	field(PREC,"5")
 	field(EGUF,"20")
 	field(EGUL,"0.1")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 	field(DRVH,"20")
 	field(DRVL,"0.1")
 	field(HOPR,"20")
@@ -148,7 +148,7 @@ grecord(ao,"$(P)HR$(N)_LambdaAO") {
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)HR$(N)_PutMoving.PROC  PP MS")
 	field(PREC,"8")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 	field(DRVH,"10")
 	field(DRVL,"0.05")
 }
@@ -156,84 +156,84 @@ grecord(ao,"$(P)HR$(N)_LambdaRdbkAO") {
 	field(DESC,"HR Wavelength Readback")
 	field(DTYP,"Soft Channel")
 	field(PREC,"8")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 }
 grecord(ao,"$(P)HR$(N)_Theta1AO") {
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)HR$(N)_PutMoving.PROC  PP MS")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_Theta1RdbkAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_Theta2AO") {
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)HR$(N)_PutMoving.PROC  PP MS")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_Theta2RdbkAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_phi1AO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_phi1CmdAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
-	field(EGU,"urad")
+	field(EGU,"uradian")
 }
 grecord(ao,"$(P)HR$(N)_phi1OffAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_phi1RdbkAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_phi1SetAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
-	field(EGU,"urad")
+	field(EGU,"uradian")
 }
 grecord(ao,"$(P)HR$(N)_phi2AO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_phi2CmdAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
-	field(EGU,"urad")
+	field(EGU,"uradian")
 }
 grecord(ao,"$(P)HR$(N)_phi2OffAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_phi2RdbkAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"7")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_phi2SetAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
-	field(EGU,"urad")
+	field(EGU,"uradian")
 }
 grecord(ao,"$(P)HR$(N)_worldOffAO") {
 	field(DTYP,"Soft Channel")
 	field(PREC,"3")
-	field(EGU,"urad")
+	field(EGU,"uradian")
 }
 grecord(bi,"$(P)HR$(N)_phi1DmovBI") {
 	field(DTYP,"Soft Channel")
@@ -422,7 +422,7 @@ grecord(ao,"$(P)HR$(N)_thetaMin") {
 	field(DTYP,"Soft Channel")
 	field(DOL,"0.5")
 	field(PREC,"2")
-	field(EGU,"Degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)HR$(N)_thetaMax") {
 	field(DESC,"min theta angle (deg)")
@@ -430,5 +430,5 @@ grecord(ao,"$(P)HR$(N)_thetaMax") {
 	field(DTYP,"Soft Channel")
 	field(DOL,"89.5")
 	field(PREC,"2")
-	field(EGU,"Degrees")
+	field(EGU,"degree")
 }

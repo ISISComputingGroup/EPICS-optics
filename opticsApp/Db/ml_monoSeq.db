@@ -53,7 +53,7 @@ grecord(ao,"$(P)ml_monoD") {
 	field(PREC,"3")
 	field(EGUF,"200")
 	field(EGUL,"0.1")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 	field(DRVH,"200")
 	field(DRVL,"0.1")
 	field(HOPR,"200")
@@ -73,7 +73,7 @@ grecord(ao,"$(P)ml_monoLambda") {
 	field(FLNK,"$(P)ml_monoPutMoving.PROC  PP MS")
 	field(OUT,"0")
 	field(PREC,"5")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 	field(DRVH,"20")
 	field(DRVL,"0.05")
 }
@@ -81,7 +81,7 @@ grecord(ao,"$(P)ml_monoTheta") {
 	field(DESC,"ml_mono Theta")
 	field(FLNK,"$(P)ml_monoPutMoving.PROC  PP MS")
 	field(PREC,"5")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)ml_monoERdbk") {
 	field(DESC,"ml_mono Energy Readback")
@@ -91,12 +91,12 @@ grecord(ao,"$(P)ml_monoERdbk") {
 grecord(ao,"$(P)ml_monoLambdaRdbk") {
 	field(DESC,"ml_mono Wavelength Readback")
 	field(PREC,"5")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 }
 grecord(ao,"$(P)ml_monoThetaRdbk") {
 	field(DESC,"ml_mono Theta Readback")
 	field(PREC,"5")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)ml_monoThetaSet") {
 	field(DESC,"ml_mono Theta Set")

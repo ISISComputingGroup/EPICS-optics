@@ -108,7 +108,7 @@ grecord(epid, "$(P)") {
 	field(I,    "0")
 	field(DRVL, "0")
 	field(DRVH, "0")
-	field(EGU,  "feedback")
+	#field(EGU,  "feedback")
 	field(PREC, "4")
 }
    #

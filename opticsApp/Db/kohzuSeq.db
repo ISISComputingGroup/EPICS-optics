@@ -78,7 +78,7 @@ grecord(ao,"$(P)BraggAAO") {
 	field(PREC,"5")
 	field(EGUF,"20")
 	field(EGUL,"0.1")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 	field(DRVH,"20")
 	field(DRVL,"0.1")
 	field(HOPR,"20")
@@ -98,7 +98,7 @@ grecord(ao,"$(P)BraggLambdaAO") {
 	field(FLNK,"$(P)KohzuPutMoving.PROC  PP MS")
 	field(OUT,"0")
 	field(PREC,"5")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 	field(DRVH,"20")
 	field(DRVL,"0.05")
 }
@@ -106,7 +106,7 @@ grecord(ao,"$(P)BraggThetaAO") {
 	field(DESC,"Kohzu Theta")
 	field(FLNK,"$(P)KohzuPutMoving.PROC  PP MS")
 	field(PREC,"5")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)BraggERdbkAO") {
 	field(DESC,"Kohzu Energy Readback")
@@ -116,12 +116,12 @@ grecord(ao,"$(P)BraggERdbkAO") {
 grecord(ao,"$(P)BraggLambdaRdbkAO") {
 	field(DESC,"Kohzu Wavelength Readback")
 	field(PREC,"5")
-	field(EGU,"Angstroms")
+	field(EGU,"angstrom")
 }
 grecord(ao,"$(P)BraggThetaRdbkAO") {
 	field(DESC,"Kohzu Theta Readback")
 	field(PREC,"5")
-	field(EGU,"degrees")
+	field(EGU,"degree")
 }
 grecord(ao,"$(P)KohzuThetaSetAO") {
 	field(DESC,"Kohzu Theta Set")
@@ -133,7 +133,7 @@ grecord(ao,"$(P)Bragg2dSpacingAO") {
 	field(PINI,"YES")
 	field(DOL,"1")
 	field(PREC,"5")
-	field(EGU,"Abgstroms")
+	field(EGU,"angstrom")
 }
 grecord(ao,"$(P)KohzuThetaCmdAO") {
 	field(PREC,"5")

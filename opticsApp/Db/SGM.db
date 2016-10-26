@@ -8,7 +8,7 @@ record(ao, "$(P)SGM$(N):2Theta") {
   field(OUT, "$(P)SGM$(N):T1.D  PP MS")
   field(DOL, "175.5")
   field(PREC, "4")
-  field(EGU, "degrees")
+  field(EGU, "degree")
   field(DRVH, "180")
 }
 
@@ -44,7 +44,7 @@ record(ao, "$(P)SGM$(N):Lambda") {
   field(DTYP, "Soft Channel")
   field(OUT, "$(P)SGM$(N):T1.F  PP MS")
   field(PREC, "6")
-  field(EGU, "Angstroms")
+  field(EGU, "angstrom")
 }
 
 record(ao, "$(P)SGM$(N):LambdaB") {
@@ -57,7 +57,7 @@ record(ao, "$(P)SGM$(N):LambdaRBV") {
   field(DESC, "Wavelength readback")
   field(DTYP, "Soft Channel")
   field(PREC, "6")
-  field(EGU, "Angstroms")
+  field(EGU, "angstrom")
 }
 
 record(ao, "$(P)SGM$(N):R") {
@@ -82,7 +82,7 @@ record(ao, "$(P)SGM$(N):d") {
   field(DOL, "$(P)SGM$(N):dCalc.VAL  NPP MS")
   field(OMSL, "closed_loop")
   field(PREC, "6")
-  field(EGU, "Angstroms")
+  field(EGU, "angstrom")
   field(DRVH, "1.e7")
 }
 
@@ -126,7 +126,7 @@ record(ao, "$(P)SGM$(N):phiRBV") {
   field(DESC, "phi readback")
   field(DTYP, "Soft Channel")
   field(PREC, "6")
-  field(EGU, "degrees")
+  field(EGU, "degree")
 }
 
 record(ao, "$(P)SGM$(N):xOff") {
@@ -204,7 +204,7 @@ record(calc, "$(P)SGM$(N):dCalc") {
   field(DESC, "cvt lines/mm to A/line")
   field(FLNK, "$(P)SGM$(N):d.PROC  PP MS")
   field(CALC, "1.e7/a")
-  field(EGU, "Angstroms")
+  field(EGU, "angstrom")
   field(PREC, "6")
 }
 
@@ -678,7 +678,7 @@ record(transform, "$(P)SGM$(N):LambdaTweak") {
   field(OUTE, "$(P)SGM$(N):Lambda.VAL  PP MS")
   field(OUTG, "$(P)SGM$(N):LambdaTweak.A  PP MS")
   field(OUTH, "$(P)SGM$(N):LambdaTweak.B  PP MS")
-  field(EGU, "Angstroms")
+  field(EGU, "angstrom")
   field(PREC, "5")
   field(CMTA, "tweak +")
   field(CMTB, "tweak -")
@@ -704,7 +704,7 @@ record(transform, "$(P)SGM$(N):T1") {
   field(OUTK, "$(P)SGM$(N):EnergyB.VAL  PP MS")
   field(PREC, "6")
   field(CMTA, "diffraction order")
-  field(CMTB, "grating period (Angstroms)")
+  field(CMTB, "grating period (angstrom)")
   field(CMTC, "tangent-arm length")
   field(CMTD, "2Theta")
   field(CMTE, "Energy")
@@ -790,7 +790,7 @@ record(transform, "$(P)SGM$(N):delta") {
   field(CMTA, "M_x readback")
   field(CMTB, "M_x Resolution")
   field(CMTC, "tangent-arm length")
-  field(CMTD, "grating period (Angstroms)")
+  field(CMTD, "grating period (angstrom)")
   field(CMTE, "diffraction order")
   field(CMTF, "2Theta")
   field(CMTG, "M_phi readback")
@@ -813,16 +813,16 @@ record(transform, "$(P)SGM$(N):limits") {
   field(OUTI, "$(P)SGM$(N):phi.DRVH  PP MS")
   field(OUTJ, "$(P)SGM$(N):phi.DRVL  PP MS")
   field(PREC, "3")
-  field(CMTA, "Wavelength high limit (Angstroms)")
-  field(CMTB, "Wavelength low limit (Angstroms)")
+  field(CMTA, "Wavelength high limit (angstrom)")
+  field(CMTB, "Wavelength low limit (angstrom)")
   field(CMTC, "m (diffraction order)")
-  field(CMTD, "d (grating period) (Angstroms)")
-  field(CMTE, "2 theta opening angle (degrees)")
+  field(CMTD, "d (grating period) (angstrom)")
+  field(CMTE, "2 theta opening angle (degree)")
   field(CMTF, "Energy high limit (keV)")
   field(CMTG, "Energy low limit (keV)")
   field(CMTH, "scratch")
-  field(CMTI, "phi high limit (degrees)")
-  field(CMTJ, "phi low limit (degrees)")
+  field(CMTI, "phi high limit (degree)")
+  field(CMTJ, "phi low limit (degree)")
 }
 
 record(transform, "$(P)SGM$(N):phiTweak") {
@@ -832,7 +832,7 @@ record(transform, "$(P)SGM$(N):phiTweak") {
   field(OUTE, "$(P)SGM$(N):phi.VAL  PP MS")
   field(OUTG, "$(P)SGM$(N):phiTweak.A  PP MS")
   field(OUTH, "$(P)SGM$(N):phiTweak.B  PP MS")
-  field(EGU, "degrees")
+  field(EGU, "degree")
   field(PREC, "5")
   field(CMTA, "tweak +")
   field(CMTB, "tweak -")

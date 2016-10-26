@@ -66,7 +66,7 @@ record(ao, "$(P)$(Q)avg") {
 record(ao, "$(P)$(Q)angl_tweakVal") {
   field(DOL, "1")
   field(PREC, "3")
-  field(EGU, "mr")
+  field(EGU, "mradian")
 }
 
 record(ao, "$(P)$(Q)anglBPut") {
@@ -77,7 +77,7 @@ record(ao, "$(P)$(Q)anglBPut") {
 record(ao, "$(P)$(Q)angl") {
   field(OUT, "$(P)$(Q)t1.C  PP MS")
   field(PREC, "3")
-  field(EGU, "mr")
+  field(EGU, "mradian")
 }
 
 record(ao, "$(P)$(Q)length") {
@@ -231,7 +231,7 @@ record(transform, "$(P)$(Q)angl_tweak") {
   field(OUTD, "$(P)$(Q)angl.VAL  PP MS")
   field(OUTF, "$(P)$(Q)angl_tweak.A  NPP NMS")
   field(OUTG, "$(P)$(Q)angl_tweak.B  NPP NMS")
-  field(EGU, "mr")
+  field(EGU, "mradian")
   field(PREC, "3")
 }
 

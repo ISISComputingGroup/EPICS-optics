@@ -116,7 +116,6 @@ record(calc, "$(P)$(R)Energy"){
   field(INPC, "$(P)$(R)EnergyLocal")
   field(CALC, "(A==0)?B:C")
   field(PREC, "4")
-  field(SCAN, "9")
 }
 
 # Change transmission by a factor
