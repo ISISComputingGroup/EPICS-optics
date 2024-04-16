@@ -32,7 +32,7 @@ program filterDrive("NAME=filterDrive, P=TEST:, R=filter:, NUM_FILTERS=8")
 **    $(P)$(R)Fi$(N)
 **
 **  The filter transmission calculations are based on the filter material
-**  and thickness, using the Chanter Tables to interpolate the material's
+**  and thickness, using the Chantler Tables to interpolate the material's
 **  absorption coefficient for the requested energy:
 **    C.T. Chantler, Journal of Physical and Chemical Reference Data 24,
 **    71 (1995).
@@ -147,52 +147,46 @@ assign FILTER_WAIT_TIME to "{P}{R}WaitTime";
 
 /* Define array of transmissions */
 double  TRANSM[MAX_FILTERS];
-assign  TRANSM to {"","","","","","","","","","","","","","","","",
-                   "","","","","","","","","","","","","","","",""};
+assign  TRANSM to {};
 
 /* Define array of thicknesses */
 double  THICK[MAX_FILTERS];
-assign  THICK to {"","","","","","","","","","","","","","","","",
-                  "","","","","","","","","","","","","","","",""};
+assign  THICK to {};
 monitor THICK;
 sync THICK needRecalc;
 
 /* Define array of filter materials */
 string  MATER[MAX_FILTERS];
-assign  MATER to {"","","","","","","","","","","","","","","","",
-                  "","","","","","","","","","","","","","","",""};
+assign  MATER to {};
 monitor MATER;
 sync MATER needRecalc;
 
 /* Define array for LOCK status of filters */
 int     LOCK[MAX_FILTERS];
-assign  LOCK to {"","","","","","","","","","","","","","","","",
-                 "","","","","","","","","","","","","","","",""};
+assign  LOCK to {};
 monitor LOCK;
 sync LOCK needRecalc;
 
 /* Define array of filters activators */
 int     SET[MAX_FILTERS];
-assign  SET to {"","","","","","","","","","","","","","","","",
-                "","","","","","","","","","","","","","","",""};
+assign  SET to {};
 monitor SET;
 
 /* Define array for the enable/disable status of the filters */
 int     ENBL[MAX_FILTERS];
-assign  ENBL to {"","","","","","","","","","","","","","","","",
-                 "","","","","","","","","","","","","","","",""};
+assign  ENBL to {};
 monitor ENBL;
 sync ENBL needRecalc;
 
-/* Define array for the output channels */
-int     OUT[MAX_FILTERS];
-assign  OUT to {"","","","","","","","","","","","","","","","",
-                "","","","","","","","","","","","","","","",""};
-                
+/* Define array for the output channels, UNUSED */
+/*
+**int     OUT[MAX_FILTERS];
+**assign  OUT to {};
+*/
+
 /* Define array for the readback of the output channels */
 int     OUTGET[MAX_FILTERS];
-assign  OUTGET to {"","","","","","","","","","","","","","","","",
-                "","","","","","","","","","","","","","","",""};
+assign  OUTGET to {};
                 
 evflag  externalIO;
 monitor OUTGET;
@@ -360,8 +354,10 @@ static double calcTrans(double keV,
           pvAssign(SET[i], str);
           sprintf(str, "%s%sFi%d:Enable", prefix, record, i+1);
           pvAssign(ENBL[i], str);
-          sprintf(str, "%s%sFi%d:Set", prefix, record, i+1);
-          pvAssign(OUT[i], str);
+          /*
+          **sprintf(str, "%s%sFi%d:Set", prefix, record, i+1);
+          **pvAssign(OUT[i], str);
+          */
           sprintf(str, "%s%sFi%d:OutGet", prefix, record, i+1);
           pvAssign(OUTGET[i], str);
           
@@ -471,7 +467,7 @@ static double calcTrans(double keV,
           efClear(externalIO);  /* Is this needed?  It probably should not be. */
           pvGet(SET[i]);
           if (SET[i] != OUTGET[i]) {
-            /* We mustn't write to SET[i] unless OUT[i] is different, because
+            /* We mustn't write to SET[i] unless OUTGET[i] is different, because
 	     * writing processes, which sets STATUS_UPDATE, which brings us back
              * here, causing an infinite loop.
              */

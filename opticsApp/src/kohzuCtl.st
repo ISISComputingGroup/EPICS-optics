@@ -378,6 +378,10 @@ monitor zSpeed;
 evflag  zMotVel_mon;
 sync    zSpeed zMotVel_mon;
 
+short speedControl;
+assign  speedControl to "{P}KohzuSpeedCtrl";
+monitor speedControl;
+
 double  thetaMotRdbk;
 assign  thetaMotRdbk to "{P}{M_THETA}.RBV";
 monitor thetaMotRdbk;
@@ -490,10 +494,20 @@ double hc;
 double radConv;
 double temp;
 
+int riskAverse;
+double prev_E;
+double prev_theta;
+double prev_lambda;
+double prev_thetaMotDesired;
+double prev_yMotDesired;
+double prev_zMotDesired;
+int willViolateLimit;
+
 ss kohzuCtl {
 state init {
 	when () {
 		initSeq = 0;
+		riskAverse = 0;	/* don't set to manual mode for limit errors */
 	} state initSequence
 }
 
@@ -634,6 +648,14 @@ state waitForCmndEnter {
 			kohzuMoving=0; kohzuDone = 0;
 			pvPut(kohzuMoving);
 		}
+		/* store previous values, in case we have to restore them */
+		prev_theta = theta;
+		prev_E = E;
+		prev_lambda = lambda;
+		prev_thetaMotDesired = thetaMotDesired;
+		prev_yMotDesired = yMotDesired;
+		prev_zMotDesired = zMotDesired;
+		willViolateLimit = 0;
 	} state waitForCmnd  
 
 	when (!initSeqDone) {
@@ -857,10 +879,16 @@ state thChanged {
 			pvPut(seqMsg1);
 			opAlert = 1;
 			pvPut(opAlert);
-			autoMode = 0;
-			pvPut(autoMode);
-			sprintf(seqMsg2, "Set to Manual Mode");
-			pvPut(seqMsg2);
+			if (theta < thetaLo) theta = thetaLo;
+			if (theta > thetaHi) theta = thetaHi;
+			if (riskAverse) {
+				autoMode = 0;
+				pvPut(autoMode);
+				sprintf(seqMsg2, "Set to Manual Mode");
+				pvPut(seqMsg2);
+			} else {
+				willViolateLimit = 1;
+			}
 		}
 		lambda = D*sin(theta/radConv);
 		pvPut(lambda);
@@ -894,23 +922,35 @@ state calcMovements {
 		   ((yMotDesired < yMotLoLim)||(yMotDesired > yMotHiLim))) {
 			sprintf(seqMsg1, "Y will exceed soft limits");
 			pvPut(seqMsg1);
-			sprintf(seqMsg2, "Setting to Manual Mode");
-			pvPut(seqMsg2);
 			opAlert = 1;
 			pvPut(opAlert);
-			autoMode = 0;
-			pvPut(autoMode);
+			if (riskAverse) {
+				sprintf(seqMsg2, "Setting to Manual Mode");
+				pvPut(seqMsg2);
+				opAlert = 1;
+				pvPut(opAlert);
+				autoMode = 0;
+				pvPut(autoMode);
+			} else {
+				willViolateLimit = 1;
+			}
 		}
 		if (ccMode != 1 && ccMode != 2 &&
 		   ((zMotDesired < zMotLoLim)||(zMotDesired > zMotHiLim))) {
 			sprintf(seqMsg1, "Z will exceed soft limits");
 			pvPut(seqMsg1);
-			sprintf(seqMsg2, "Setting to Manual Mode");
-			pvPut(seqMsg2);
 			opAlert = 1;
 			pvPut(opAlert);
-			autoMode = 0;
-			pvPut(autoMode);
+			if (riskAverse) {
+				sprintf(seqMsg2, "Setting to Manual Mode");
+				pvPut(seqMsg2);
+				opAlert = 1;
+				pvPut(opAlert);
+				autoMode = 0;
+				pvPut(autoMode);
+			} else {
+				willViolateLimit = 1;
+			}
 		}
 		pvPut(thetaMotDesired);
 		pvPut(yMotDesired);
@@ -954,17 +994,37 @@ state calcMovements {
 }
 
 state moveKohzu {
+	when (willViolateLimit) {
+		E = prev_E;
+		pvPut(E);
+		theta = prev_theta;
+		pvPut(theta);
+		lambda = prev_lambda;
+		pvPut(lambda);
+		thetaMotDesired = prev_thetaMotDesired;
+		pvPut(thetaMotDesired);
+		yMotDesired = prev_yMotDesired;
+		pvPut(yMotDesired);
+		zMotDesired = prev_zMotDesired;
+		pvPut(zMotDesired);
+		sprintf(seqMsg2, "Command ignored");
+		pvPut(seqMsg2);
+		kohzuDone = 1;
+	} state waitForCmndEnter
+
 	when (autoMode || putVals || useSetMode) {
 		if (kohzuCtlDebug) %%printf("kohzuCtl:moveKohzu:auto|put\n");
-		thSpeed = newThSpeed;
-		ySpeed = newYSpeed;
-		zSpeed = newZSpeed;
-		pvPut(thSpeed);
-		if (ccMode == 0 || ccMode == 2) {
-			pvPut(ySpeed);
-		}
-		if (ccMode == 0 || ccMode == 3) {
-			pvPut(zSpeed);
+		if (speedControl) {
+			thSpeed = newThSpeed;
+			ySpeed = newYSpeed;
+			zSpeed = newZSpeed;
+			pvPut(thSpeed);
+			if (ccMode == 0 || ccMode == 2) {
+				pvPut(ySpeed);
+			}
+			if (ccMode == 0 || ccMode == 3) {
+				pvPut(zSpeed);
+			}
 		}
 		thetaMotCmd = thetaMotDesired;
 		yMotCmd = yMotDesired;
@@ -1003,6 +1063,9 @@ state checkDone {
 }
 
 state updateRdbk {
+	when (willViolateLimit == 1) {
+	} state waitForCmndEnter
+
 	when (thetaMotRdbk == 0) {
 		if (kohzuCtlDebug) %%printf("kohzuCtl:updateRdbk:thetaMotRdbk==0\n");
 		sprintf(seqMsg1, "Theta Motor Readback is 0 !");
@@ -1081,13 +1144,15 @@ state updateRdbk {
 state thetaMotStopped {
 	when (causedMove) {
 		if (kohzuCtlDebug) %%printf("kohzuCtl:thetaMotStopped:causedMove (done=%d,moving=%d)\n", kohzuDone, kohzuMoving);
-		thSpeed = oldThSpeed;
-		ySpeed = oldYSpeed;
-		zSpeed = oldZSpeed;
-		pvPut(thSpeed);
-		pvPut(ySpeed);
+		if (speedControl) {
+			thSpeed = oldThSpeed;
+			ySpeed = oldYSpeed;
+			zSpeed = oldZSpeed;
+			pvPut(thSpeed);
+			pvPut(ySpeed);
+			pvPut(zSpeed);
+		}
 		if (kohzuCtlDebug) %%printf("kohzuCtl:thetaMotStopped: ySpeed = %f\n", ySpeed);
-		pvPut(zSpeed);
 		causedMove = 0;
 	} state waitForCmndEnter
 

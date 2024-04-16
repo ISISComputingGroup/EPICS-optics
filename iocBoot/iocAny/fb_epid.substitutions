@@ -1,4 +1,4 @@
-# $Id: fb_epid.substitutions 14504 2012-02-29 21:11:18Z jemian $
+# $Id$
 
 file "$(OPTICS)/opticsApp/Db/fb_epid.db"
   {

@@ -10,8 +10,10 @@ include "tableRecord.dbd"
 ################
 # DRIVER SUPPORT
 ################
+variable(tableRecordDebug, int)
 
 registrar(kohzuCtlRegistrar)
+registrar(kohzuCtl_softRegistrar)
 registrar(hrCtlRegistrar)
 registrar(xiahscRegistrar)
 registrar(xia_slitRegistrar)
@@ -20,3 +22,5 @@ registrar(pf4Registrar)
 registrar(IoRegistrar)
 registrar(ml_monoCtlRegistrar)
 registrar(filterDriveRegistrar)
+registrar(flexCombinedMotionRegistrar)
+

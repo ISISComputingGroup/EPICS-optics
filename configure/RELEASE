@@ -1,12 +1,32 @@
-# START OF AUTO GENERATED DEPENDENCIES
-AUTOSAVE=$(SUPPORT)/autosave/master
-CALC=$(SUPPORT)/calc/master
-SNCSEQ=$(SUPPORT)/seq/master
-SSCAN=$(SUPPORT)/sscan/master
-# END OF AUTO GENERATED DEPENDENCIES
+#RELEASE Location of external products
+# Run "gnumake clean uninstall install" in the application
+# top directory each time this file is changed.
 
-# optional extra local definitions here
--include $(TOP)/configure/RELEASE.private
+TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 
-include $(TOP)/../../../ISIS_CONFIG
--include $(TOP)/../../../ISIS_CONFIG.$(EPICS_HOST_ARCH)
+SUPPORT=/home/oxygen/MOONEY/epics/synAppsGIT/support
+
+#If using the sequencer, point SNCSEQ at its top directory:
+SNCSEQ=$(SUPPORT)/seq-2-2-3
+
+# For transform record (not needed to build)
+CALC=$(SUPPORT)/calc-3-6-1
+
+# For busy record (not needed to build)
+BUSY=$(SUPPORT)/busy-1-6-1
+
+# for serial support
+ASYN=$(SUPPORT)/asyn-R4-30
+
+# EPICS_BASE usually appears last so other apps can override stuff:
+EPICS_BASE=/home/oxygen/MOONEY/epics/base-3.15.4
+
+#Capfast users may need the following definitions
+#CAPFAST_TEMPLATES=
+#SCH2EDIF_PATH=
+
+# These lines allow developers to override these RELEASE settings
+# without having to modify this file directly.
+-include $(TOP)/../RELEASE.local
+-include $(TOP)/../RELEASE.$(EPICS_HOST_ARCH).local
+-include $(TOP)/configure/RELEASE.local

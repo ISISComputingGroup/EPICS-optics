@@ -18,17 +18,18 @@ include $(TOP)/configure/CONFIG
 
 DBDINC += tableRecord
 
-DBD += opticsSupport.dbd opticsTest.dbd
+DBD += opticsSupport.dbd
 
 #=============================
 
 LIBRARY_IOC += optics
 
+
 optics_SRCS += tableRecord.c
 
 ### The following builds SNL programs as components of optics
 # NOTE: for suffix .st, code is run through cpp; for .stt, it's not
-optics_SRCS += kohzuCtl.st
+optics_SRCS += kohzuCtl.st kohzuCtl_soft.st
 optics_SRCS += hrCtl.st
 optics_SRCS += ml_monoCtl.st
 
@@ -54,23 +55,12 @@ optics_SRCS += filterDrive.st
 # Pete Jemian's (SNL program) support for
 #    Oxford Quad X-ray Beam Position Monitor
 optics_SRCS   += sncqxbpm.st
+
+# Support for APS flexure stages
+optics_SRCS   += flexCombinedMotion.st
  
 optics_LIBS += seq pv
 optics_LIBS += $(EPICS_BASE_IOC_LIBS)
-
-PROD_IOC += opticsTest
-
-opticsTest_SRCS += opticsMain.cpp
-opticsTest_SRCS += opticsTest_registerRecordDeviceDriver.cpp
-
-opticsTest_LIBS += optics
-opticsTest_LIBS += calc
-opticsTest_LIBS += sscan
-opticsTest_LIBS += autosave
-opticsTest_LIBS += seq pv
-
-# Finally link to the EPICS Base libraries
-opticsTest_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 include $(TOP)/configure/RULES
 #----------------------------------------
